@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TymczasowyMail.pl - Błyskawiczna Poczta Tymczasowa</title>
+    <meta name="description" content="TymczasowyMail.pl to szybka, darmowa i bezpieczna tymczasowa poczta e-mail. Chroń swoją prywatność i unikaj spamu. Skrzynka jednorazowa gotowa w sekundę.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://tymczasowymail.pl/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tymczasowymail.pl/">
+    <meta property="og:title" content="TymczasowyMail.pl - Błyskawiczna Poczta Tymczasowa">
+    <meta property="og:description" content="TymczasowyMail.pl to szybka, darmowa i bezpieczna tymczasowa poczta e-mail. Chroń swoją prywatność i unikaj spamu. Skrzynka jednorazowa gotowa w sekundę.">
+    <meta property="og:image" content="https://tymczasowymail.pl/favicon.ico">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://tymczasowymail.pl/">
+    <meta property="twitter:title" content="TymczasowyMail.pl - Błyskawiczna Poczta Tymczasowa">
+    <meta property="twitter:description" content="TymczasowyMail.pl to szybka, darmowa i bezpieczna tymczasowa poczta e-mail. Chroń swoją prywatność i unikaj spamu. Skrzynka jednorazowa gotowa w sekundę.">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TymczasowyMail.pl",
+      "url": "https://tymczasowymail.pl/",
+      "description": "Błyskawiczna, darmowa i bezpieczna tymczasowa poczta e-mail."
+    }
+    </script>
+    <link href="/fonts/outfit.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --bg-inbox-section: #f1f5f9;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-green: #059669;
+            --shadow-glow: rgba(79, 70, 229, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(5, 150, 105, 0.03) 0%, transparent 40%);
+        }
+
+        header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo svg {
+            stroke: #4f46e5;
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(5, 150, 105, 0.08);
+            color: var(--accent-green);
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(5, 150, 105, 0.15);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.5);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 6px rgba(5, 150, 105, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(5, 150, 105, 0);
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.025em;
+        }
+
+        .email-display-container {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 2px solid var(--primary-color);
+            border-radius: 14px;
+            padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.08), 0 8px 10px -6px rgba(79, 70, 229, 0.04);
+        }
+
+        .email-display {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-main);
+            word-break: break-all;
+            margin-right: 1rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        button {
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 14px 0 var(--shadow-glow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        /* Inbox Section */
+        .inbox-section {
+            background-color: var(--bg-inbox-section);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 3rem 1.5rem;
+            width: 100%;
+        }
+
+        .inbox-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Content Grid */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            min-height: 450px;
+        }
+
+        @media (min-width: 992px) {
+            .workspace-grid {
+                grid-template-columns: 380px 1fr;
+            }
+        }
+
+        .panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 10px -1px rgba(15, 23, 42, 0.03);
+        }
+
+        .panel-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Email List Panel */
+        .email-list {
+            overflow-y: auto;
+            flex-grow: 1;
+            max-height: 500px;
+        }
+
+        @media (min-width: 992px) {
+            .email-list {
+                max-height: 500px;
+            }
+        }
+
+        .email-item {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            position: relative;
+        }
+
+        .email-item:hover {
+            background: rgba(15, 23, 42, 0.015);
+        }
+
+        .email-item.active {
+            background: rgba(79, 70, 229, 0.04);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .email-item-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.35rem;
+            font-size: 0.85rem;
+        }
+
+        .email-item-sender {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .email-item-time {
+            color: var(--text-muted);
+        }
+
+        .email-item-subject {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .email-item-preview {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Empty State */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            flex-grow: 1;
+            gap: 1rem;
+        }
+
+        .empty-state svg {
+            stroke: var(--text-muted);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Email Details Panel */
+        .email-details {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .details-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .details-subject {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .details-meta-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        @media (min-width: 576px) {
+            .details-meta-row {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .details-from span {
+            color: var(--text-muted);
+        }
+
+        .details-from strong {
+            color: var(--primary-color);
+        }
+
+        .details-date {
+            color: var(--text-muted);
+        }
+
+        .details-body {
+            line-height: 1.6;
+            color: #334155;
+            white-space: pre-wrap;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        /* Features Section */
+        .features-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .features-section {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(79, 70, 229, 0.08);
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.25s ease;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            transform: translateY(20px);
+            transition: all 0.25s ease;
+        }
+
+        .modal.open .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.25rem;
+            line-height: 1;
+        }
+
+        .modal-body {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #059669;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.3);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 100;
+            opacity: 0;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .footer-disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-disclaimer strong {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            TymczasowyMail.pl
+        </div>
+        <div class="badge-live" style="background: rgba(79, 70, 229, 0.08); color: var(--primary-color); border: 1px solid rgba(79, 70, 229, 0.15);">
+            Utworzone dzisiaj: <span id="today-count" style="font-weight: 700; margin-left: 0.25rem;">0</span>
+        </div>
+    </header>
+
+    <main style="flex-grow: 1;">
+        <!-- Top Hero Section: Email Generation -->
+        <section class="hero-section">
+            <h1 class="hero-title">Błyskawiczna Poczta Tymczasowa</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                Chroń swoją prywatność i unikaj spamu. Wygeneruj bezpieczną, jednorazową skrzynkę e-mail jednym kliknięciem.
+            </p>
+            
+            <div style="width: 100%; max-width: 600px; margin-top: 1.5rem;">
+                <div class="email-display-container">
+                    <span class="email-display" id="email-address">Ładowanie...</span>
+                    <button class="btn-primary" onclick="copyAddress()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                        Kopiuj
+                    </button>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
+                    Korzystanie z serwisu oznacza akceptację <a href="javascript:void(0)" onclick="openModal('modal-regulamin')" style="color: var(--primary-color); text-decoration: none;">Regulaminu</a> i <a href="javascript:void(0)" onclick="openModal('modal-polityka')" style="color: var(--primary-color); text-decoration: none;">Polityki Prywatności</a>.
+                </div>
+                
+                <div class="hero-actions">
+                    <button class="btn-secondary" onclick="generateNewAddress()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        Wygeneruj inny adres
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Middle Section: Inbox (Different Background Color) -->
+        <section class="inbox-section">
+            <div class="inbox-container">
+                <div class="workspace-grid">
+                    
+                    <!-- Left: Messages List -->
+                    <section class="panel">
+                        <div class="panel-header">
+                            Odebrane wiadomości
+                            <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);" id="mail-count">0 wiadomości</span>
+                        </div>
+                        <div class="email-list" id="email-list">
+                            <!-- Dynamic email items will go here -->
+                        </div>
+                    </section>
+        
+                    <!-- Right: Details Display -->
+                    <section class="panel">
+                        <div class="panel-header">
+                            Podgląd wiadomości
+                        </div>
+                        <div id="email-view-container" style="display: flex; flex-grow: 1; flex-direction: column;">
+                            <div class="empty-state">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v8c0 1.1-.9 2-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"/><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"/></svg>
+                                <p>Skrzynka jest pusta. Czekam na nowe wiadomości e-mail...</p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Steps Section -->
+        <section class="steps-section" style="max-width: 800px; margin: 0 auto; padding: 2.5rem 1.5rem; text-align: left; width: 100%;">
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-main); letter-spacing: -0.02em;">Jak to działa</h2>
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div style="border-left: 3px solid var(--primary-color); padding-left: 1.25rem;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);">Krok 1. Wygeneruj adres</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem; line-height: 1.5;">Wejdź na stronę, a Twój unikalny tymczasowy adres e-mail będzie gotowy natychmiast.</p>
+                </div>
+                <div style="border-left: 3px solid var(--primary-color); padding-left: 1.25rem;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);">Krok 2. Odbierz pocztę</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem; line-height: 1.5;">Użyj adresu przy rejestracji. Otrzymana poczta pojawi się automatycznie bez przeładowywania strony.</p>
+                </div>
+                <div style="border-left: 3px solid var(--primary-color); padding-left: 1.25rem;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);">Krok 3. Automatyczne usuwanie</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem; line-height: 1.5;">Wszystkie odebrane maile oraz same skrzynki pocztowe wygasają bezpowrotnie po 24 godzinach.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" style="max-width: 800px; margin: 3rem auto; padding: 3rem 1.5rem 0 1.5rem; text-align: left; border-top: 1px solid var(--border-color); width: 100%;">
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 2rem; color: var(--text-main); letter-spacing: -0.02em;">Często zadawane pytania (FAQ)</h2>
+            <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+                <div>
+                    <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);">Co to jest tymczasowy e-mail?</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.6;">To jednorazowa skrzynka pocztowa, która chroni Twój prywatny adres e-mail przed spamem, reklamami i potencjalnymi wyciekami danych podczas rejestracji w niesprawdzonych serwisach.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);">Jak odświeżyć skrzynkę odbiorczą?</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.6;">Nie musisz nic klikać ani odświeżać strony. Nasz serwis korzysta z technologii push w czasie rzeczywistym (Server-Sent Events). Każdy nowy e-mail pojawia się na Twoim ekranie natychmiast po jego wysłaniu przez nadawcę.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);">Czy moje wiadomości są bezpieczne?</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.6;">Tak. Nie zapisujemy informacji o użytkownikach i nie stosujemy żadnych plików śledzących (cookies). Wszystkie dane są automatycznie kasowane po upływie 24 godzin.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);">Czy mogę wysyłać stąd wiadomości?</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.6;">Nie. Usługa służy wyłącznie do odbierania poczty przychodzącej. Funkcja wysyłania nie jest dostępna ze względów bezpieczeństwa (ochrona przed spamem).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Rich Content Section -->
+        <section class="seo-section" style="max-width: 800px; margin: 4rem auto 2rem auto; padding: 2rem 1.5rem; text-align: left; border-top: 1px solid var(--border-color); width: 100%;">
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-main); letter-spacing: -0.02em;">Dlaczego warto korzystać z tymczasowej poczty e-mail?</h2>
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem;">
+                Usługa <strong>TymczasowyMail.pl</strong> to proste i nowoczesne narzędzie stworzone z myślą o ochronie Twojej prywatności w sieci. Rejestrując się w nowych serwisach internetowych, testując aplikacje lub biorąc udział w dyskusjach na publicznych forach, często musisz podać swój adres e-mail. Udostępnienie prywatnej skrzynki niesie ze sobą ryzyko otrzymywania niechcianego spamu, reklam lub wycieku danych. Użycie <strong>jednorazowego e-maila</strong> pozwala skutecznie chronić Twój główny adres pocztowy.
+            </p>
+            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem;">
+                Serwis <strong>TymczasowyMail.pl</strong> stawia na pełną anonimowość. Nie stosujemy plików cookies do śledzenia użytkowników ani zewnętrznych systemów analitycznych. Wszystkie przychodzące wiadomości są automatycznie i bezpowrotnie usuwane z serwera po 24 godzinach. Dzięki technologii czasu rzeczywistego (Server-Sent Events) wiadomości pojawiają się na Twoim ekranie natychmiast po ich wysłaniu przez nadawcę, co zapewnia wygodną pracę bez konieczności ręcznego odświeżania.
+            </p>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.75rem;">Główne zalety jednorazowych skrzynek:</h3>
+            <ul style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; padding-left: 1.5rem; margin-bottom: 1.25rem;">
+                <li><strong>Ochrona przed spamem:</strong> Twój prywatny adres e-mail pozostaje czysty i wolny od reklam.</li>
+                <li><strong>Ograniczenie ryzyka:</strong> W przypadku wycieku danych z testowanego serwisu, Twoje prawdziwe dane kontaktowe pozostają bezpieczne.</li>
+                <li><strong>Prywatność bez kompromisów:</strong> Brak rejestracji, haseł i konieczności podawania jakichkolwiek danych osobowych.</li>
+                <li><strong>Szybkość działania:</strong> Bezpośrednie, natychmiastowe dostarczanie poczty w czasie rzeczywistym.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 0.85rem;">
+                <a href="javascript:void(0)" onclick="openModal('modal-regulamin')" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Regulamin</a>
+                <a href="javascript:void(0)" onclick="openModal('modal-polityka')" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Polityka Prywatności</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.8;">&copy; 2026 TymczasowyMail.pl. Bezpieczna poczta jednorazowa.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="modal-regulamin">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title">Regulamin Serwisu</div>
+                <button class="modal-close" onclick="closeModal('modal-regulamin')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>1. Postanowienia ogólne:</strong> Serwis TymczasowyMail.pl świadczy darmową, niekomercyjną usługę polegającą na udostępnianiu tymczasowych, jednorazowych skrzynek pocztowych.</p>
+                <p><strong>2. Czas działania:</strong> Każda wygenerowana skrzynka oraz otrzymane wiadomości są przechowywane na serwerze maksymalnie przez 24 godziny od momentu ich odebrania, po czym są bezpowrotnie usuwane.</p>
+                <p><strong>3. Wyłączenie odpowiedzialności:</strong> Usługa jest świadczona w stanie takim, jakim jest („as is”). Właściciel serwisu nie gwarantuje 100% bezawaryjności, ciągłości działania usługi ani dostarczenia każdej wiadomości. Właściciel nie ponosi odpowiedzialności za jakiekolwiek szkody, utratę danych lub utratę dostępu do kont zewnętrznych wynikające z automatycznego usunięcia skrzynki lub awarii serwisu.</p>
+                <p><strong>4. Warunki użytkowania:</strong> Zabrania się wykorzystywania serwisu do celów niezgodnych z prawem (w tym spamu, oszustw, nękania lub rejestrowania kont do celów przestępczych). Zabrania się automatycznego generowania skrzynek lub odpytywania API serwisu za pomocą botów i zewnętrznych skryptów bez zgody właściciela. W przypadku naruszenia zasad, dostęp użytkownika (adres IP) może zostać zablokowany.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-polityka">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title">Polityka Prywatności</div>
+                <button class="modal-close" onclick="closeModal('modal-polityka')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>5. Administrator danych:</strong> Administratorem danych osobowych zbieranych na stronie jest właściciel serwisu TymczasowyMail.pl, kontakt e-mail: <strong>support@tymczasowymail.pl</strong>.</p>
+                <p><strong>6. Przetwarzanie adresów IP:</strong> W celu zapewnienia stabilności i bezpieczeństwa infrastruktury (np. zapobieganie atakom typu DDoS, blokowanie spamu), serwer tymczasowo rejestruje adresy IP użytkowników w pamięci operacyjnej (RAM) do limitowania liczby żądań (rate limiting) oraz w standardowych logach systemowych. Podstawą prawną jest art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes administratora). Dane w logach są automatycznie nadpisywane po krótkim okresie niezbędnym do zapewnienia bezpieczeństwa.</p>
+                <p><strong>7. Przetwarzanie treści wiadomości:</strong> Serwis nie gromadzi, nie analizuje ani nie profiluje danych użytkowników. Jednak z uwagi na specyfikę usługi, serwer odbiera i tymczasowo przechowuje przychodzące wiadomości e-mail, które mogą zawierać dane osobowe. Podstawą przetwarzania jest zgoda wyrażona przez użytkownika poprzez skorzystanie z usługi (art. 6 ust. 1 lit. a RODO). Wszystkie wiadomości są bezpowrotnie kasowane po maksymalnie 24 godzinach.</p>
+                <p><strong>8. Technologia Local Storage:</strong> Serwis nie wykorzystuje tradycyjnych plików cookies do śledzenia użytkowników. W celu zapewnienia prawidłowego działania i wygody korzystania z serwisu (np. utrzymanie sesji wygenerowanej skrzynki), strona korzysta z technologii Local Storage w przeglądarce użytkownika. Zapisane w ten sposób dane mają charakter czysto techniczny, nie pozwalają na identyfikację tożsamości i nie są przesyłane na serwer. Można je w każdej chwili usunąć w ustawieniach przeglądarki.</p>
+                <p><strong>9. Prawa użytkownika:</strong> Każdemu użytkownikowi przysługuje prawo do dostępu do swoich danych, ich usunięcia, ograniczenia przetwarzania oraz wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Adres skopiowany do schowka!</div>
+
+    <script>
+        let selectedEmailId = null;
+        let currentEmails = [];
+        let eventSource = null;
+
+        // Inicjalizacja: sprawdzamy czy mamy już zapisaną skrzynkę
+        window.addEventListener('DOMContentLoaded', () => {
+            initInbox();
+        });
+
+        // Konfiguracja połączenia Server-Sent Events (SSE)
+        function setupSse(token) {
+            if (eventSource) {
+                eventSource.close();
+            }
+
+            eventSource = new EventSource(`/service/stream?token=${encodeURIComponent(token)}`);
+
+            // Odbieranie statystyk dzisiejszych skrzynek
+            eventSource.addEventListener('stats', (event) => {
+                document.getElementById('today-count').textContent = event.data;
+            });
+
+            // Odbieranie początkowej listy maili (historia)
+            eventSource.addEventListener('maile', (event) => {
+                currentEmails = JSON.parse(event.data);
+                renderEmailList(currentEmails);
+            });
+
+            // Odbieranie nowego maila w locie (domyślne zdarzenie bez nazwy)
+            eventSource.onmessage = (event) => {
+                const newEmail = JSON.parse(event.data);
+                currentEmails.unshift(newEmail);
+                renderEmailList(currentEmails);
+                showToast('Otrzymano nową wiadomość e-mail!');
+            };
+
+            eventSource.onerror = (err) => {
+                console.error('Błąd połączenia strumieniowego SSE. Przeglądarka automatycznie spróbuje połączyć się ponownie.', err);
+            };
+        }
+
+        // Obsługa Modal
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Zamknij modal po kliknięciu poza kartą
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target.id);
+            }
+        });
+
+        // Inicjalizacja skrzynki
+        function initInbox() {
+            const token = localStorage.getItem('temp_inbox_token');
+            const email = localStorage.getItem('temp_inbox_email');
+
+            if (token && email) {
+                document.getElementById('email-address').textContent = email;
+                setupSse(token);
+            } else {
+                generateNewAddressFromServer();
+            }
+        }
+
+        // Generowanie nowej skrzynki na serwerze
+        function generateNewAddressFromServer() {
+            fetch('/service/generate', {
+                method: 'POST'
+            })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('temp_inbox_token', data.token);
+                localStorage.setItem('temp_inbox_email', data.mail);
+
+                document.getElementById('email-address').textContent = data.mail;
+                selectedEmailId = null;
+                currentEmails = [];
+                renderEmailList([]);
+                resetEmailPreview();
+                setupSse(data.token);
+            })
+            .catch(err => console.error('Błąd generowania skrzynki:', err));
+        }
+
+        // Renderowanie listy e-maili po lewej stronie
+        function renderEmailList(emails) {
+            const listContainer = document.getElementById('email-list');
+            const countLabel = document.getElementById('mail-count');
+            countLabel.textContent = `${emails.length} ${getPolishPlural(emails.length, 'wiadomość', 'wiadomości', 'wiadomości')}`;
+
+            if (emails.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="empty-state" style="padding: 5rem 1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                        <p style="font-size: 0.9rem;">Brak wiadomości</p>
+                    </div>
+                `;
+                if (selectedEmailId !== null) {
+                    selectedEmailId = null;
+                    resetEmailPreview();
+                }
+                return;
+            }
+
+            listContainer.innerHTML = emails.map(email => {
+                const isActive = email.id === selectedEmailId ? 'active' : '';
+                const time = formatTime(email.receivedAt);
+                const bodyPreview = email.body ? email.body.substring(0, 60) + '...' : 'Brak treści';
+                return `
+                    <div class="email-item ${isActive}" onclick="selectEmail(${email.id}, ${JSON.stringify(email).replace(/"/g, '&quot;')})">
+                        <div class="email-item-meta">
+                            <span class="email-item-sender">${escapeHtml(email.sender)}</span>
+                            <span class="email-item-time">${time}</span>
+                        </div>
+                        <div class="email-item-subject">${escapeHtml(email.subject || '(Bez tematu)')}</div>
+                        <div class="email-item-preview">${escapeHtml(bodyPreview)}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Wybór konkretnej wiadomości
+        function selectEmail(id, email) {
+            selectedEmailId = id;
+            document.querySelectorAll('.email-item').forEach(item => item.classList.remove('active'));
+            renderEmailDetails(email);
+            renderEmailList(currentEmails);
+        }
+
+        // Renderowanie szczegółów wiadomości po prawej stronie
+        function renderEmailDetails(email) {
+            const container = document.getElementById('email-view-container');
+            container.innerHTML = `
+                <div class="email-details">
+                    <div class="details-header">
+                        <h1 class="details-subject">${escapeHtml(email.subject || '(Bez tematu)')}</h1>
+                        <div class="details-meta-row">
+                            <div class="details-from">Od: <strong>${escapeHtml(email.sender)}</strong></div>
+                            <div class="details-date">${formatDateTime(email.receivedAt)}</div>
+                        </div>
+                    </div>
+                    <div class="details-body">${escapeHtml(email.body || '')}</div>
+                </div>
+            `;
+        }
+
+        // Reset podglądu wiadomości do stanu pustego
+        function resetEmailPreview() {
+            const container = document.getElementById('email-view-container');
+            container.innerHTML = `
+                <div class="empty-state">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v8c0 1.1-.9 2-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"/><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"/></svg>
+                    <p>Skrzynka jest pusta. Czekam na nowe wiadomości e-mail...</p>
+                </div>
+            `;
+        }
+
+        // Generowanie nowej skrzynki (przycisk "Nowy adres")
+        function generateNewAddress() {
+            if (confirm('Czy na pewno chcesz zmienić adres? Wszystkie wiadomości z obecnego adresu zostaną bezpowrotnie usunięte.')) {
+                generateNewAddressFromServer();
+                showToast('Wygenerowano nowy adres e-mail!');
+            }
+        }
+
+        // Kopiowanie adresu do schowka
+        function copyAddress() {
+            const address = document.getElementById('email-address').textContent;
+            if (address && address !== 'Ładowanie...') {
+                navigator.clipboard.writeText(address).then(() => {
+                    showToast('Skopiowano adres e-mail do schowka!');
+                });
+            }
+        }
+
+        // Pokazywanie powiadomienia Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Pomocnicze funkcje formatowania i bezpieczeństwa
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function formatTime(isoString) {
+            const date = new Date(isoString);
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${hours}:${minutes}`;
+        }
+
+        function formatDateTime(isoString) {
+            const date = new Date(isoString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${day}.${month}.${year} ${hours}:${minutes}`;
+        }
+
+        function getPolishPlural(number, singular, plural1, plural2) {
+            if (number === 1) return singular;
+            const lastDigit = number % 10;
+            const lastTwoDigits = number % 100;
+            if (lastDigit >= 2 && lastDigit <= 4 && (lastTwoDigits < 10 || lastTwoDigits > 20)) {
+                return plural1; // np. 2 wiadomości, 24 wiadomości
+            }
+            return plural2; // np. 5 wiadomości, 10 wiadomości
+        }
+    </script>
+</body>
+</html>

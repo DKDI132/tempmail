@@ -21,15 +21,12 @@ public class Connections {
         return zbior.get(mail);
     }
 
-    @Scheduled(fixedRate = 20000) // Wywoływane automatycznie co 20 sekund
+    @Scheduled(fixedRate = 20000)
     public void wyslijHeartbeat() {
         zbior.forEach((mail, polaczenie) -> {
             try {
-                // Wysyłamy komentarz (np. ":ping"), który przeglądarka zignoruje,
-                // ale wymusi to zapis sieciowy. Jeśli socket jest martwy, rzuci IOException.
                 polaczenie.send(SseEmitter.event().comment("ping"));
             } catch (Exception e) {
-                // Wychwytujemy błąd zapisu i zamykamy emiter, co wywoła usunięcie z mapy
                 polaczenie.completeWithError(e);
             }
         });

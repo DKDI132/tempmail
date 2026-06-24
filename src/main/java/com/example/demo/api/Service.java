@@ -58,7 +58,11 @@ public class Service {
         polaczenie.onError((ex) -> polaczenia.usun(email, polaczenie));
         polaczenia.dodaj(email,polaczenie);
         return polaczenie;
+    }
 
-
+    @GetMapping("/validate")
+    public Map<String, Boolean> walidujToken(@RequestParam String token){
+        boolean istnieje = skrzynka.findByToken(token).isPresent();
+        return Map.of("valid", istnieje);
     }
 }

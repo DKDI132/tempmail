@@ -1,6 +1,6 @@
 # TymczasowyMail.pl - System Tymczasowej Poczty E-mail
 
-W pełni funkcjonalny, lekki i bezpieczny system tymczasowej poczty e-mail (Temp Mail). Projekt składa się z backendu w języku **Java (Spring Boot)**, skryptu nasłuchującego pocztę SMTP w Pythonie oraz frontendu HTML/CSS/JS. DOSTEPNA POD ADRESEM : TymczasowyMail.pl
+W pełni funkcjonalny, lekki i bezpieczny system tymczasowej poczty e-mail (Temp Mail). Projekt składa się z backendu w języku **Java (Spring Boot)**, skryptu nasłuchującego pocztę SMTP w Pythonie oraz frontendu HTML/CSS/JS
 
 ---
 
